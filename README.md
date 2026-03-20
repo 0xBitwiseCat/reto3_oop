@@ -39,7 +39,9 @@ The menu should have at least 10 items.
 The code should follow PEP8 rules.
 
 
-## Diagrams
+# Diagrams
+
+## Rectangle - Point - Line
 ```mermaid
 classDiagram
     class Point {
@@ -84,6 +86,7 @@ classDiagram
     Rectangle *-- Point : center
 ```
 
+## Restaurant - Order - MenuItem 
 ```mermaid
 classDiagram
     class MenuItem {
