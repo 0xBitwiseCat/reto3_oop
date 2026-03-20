@@ -37,3 +37,103 @@ classDiagram
 Create a class diagram with all classes and their relationships.
 The menu should have at least 10 items.
 The code should follow PEP8 rules.
+
+
+## Diagrams
+```mermaid
+classDiagram
+    class Point {
+        +float x
+        +float y
+        +move(new_x, new_y)
+        +reset()
+        +compute_distance(point) float
+    }
+
+    class Numerical {
+        +float error_diff
+        +Point p0
+    }
+
+    class Line {
+        +Point start
+        +Point end
+        +float length
+        +float slope
+        +compute_slope() float
+        +compute_length() float
+        +compute_horizontal_cross() Point
+        +compute_vertical_cross() Point
+        +dot(Line) float
+        +is_connected(Line) bool
+    }
+
+    class Rectangle {
+        +float width
+        +float height
+        +Point center
+        +compute_area() float
+        +compute_perimeter() float
+        +compute_interference_point(Point) bool
+    }
+
+    Numerical <|-- Line
+    Numerical <|-- Rectangle
+    Line *-- Point : composition (2 Points)
+    Rectangle *-- Line : composition (4 Lines)
+    Rectangle *-- Point : center
+```
+
+```mermaid
+classDiagram
+    class MenuItem {
+        +string name
+        +float price
+        +int quantity
+        +bool seasonal
+    }
+
+    class Dessert {
+        +string flavor
+        +bool has_alcohol
+    }
+
+    class Beverage {
+        +string flavor
+        +bool has_alcohol
+    }
+
+    class MainCourse {
+        +string flavor
+        +bool has_alcohol
+    }
+
+    class Appetizer {
+        +string flavor
+        +bool has_alcohol
+    }
+
+    class Order {
+        +list items
+        +string client_name
+        +float discounts
+        +add(MenuItem)
+        +remove(MenuItem)
+        +define_offers()
+        +total() float
+        +summary()
+    }
+
+    class Restaurant {
+        +list orders
+        +list items
+        +add_order(client_name, items)
+    }
+
+    MenuItem <|-- Dessert
+    MenuItem <|-- Beverage
+    MenuItem <|-- MainCourse
+    MenuItem <|-- Appetizer
+    Order o-- MenuItem : aggregation
+    Restaurant *-- Order : composition
+```
